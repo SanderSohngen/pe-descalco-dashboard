@@ -9,6 +9,13 @@ class Artist(models.Model):
         return self.name
 
 
+class SongType(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
 class Song(models.Model):
     title = models.CharField(max_length=255)
     artists = models.ManyToManyField(Artist, related_name='songs')
@@ -19,16 +26,8 @@ class Song(models.Model):
         blank=True,
         null=True
     )
+    song_type = models.ForeignKey(SongType, on_delete=models.CASCADE)
     melodic = models.BooleanField(default=False)
-
-    TYPE_CHOICES = [
-        ('slow', 'Lenta'),
-        ('medium', 'Média'),
-        ('arrastape', 'Arrasta pé'),
-        ('fast', 'Rápida'),
-        ('very_fast', 'Muito rápida')
-    ]
-    song_type = models.CharField(max_length=10, choices=TYPE_CHOICES)
 
     def __str__(self):
         version_str = f" ({self.version})" if self.version else ""
