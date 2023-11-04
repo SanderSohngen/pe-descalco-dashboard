@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+
+class Day(models.Model):
+    date = models.DateField(unique=True)
+
+    def __str__(self):
+        return self.date.strftime('%d/%m/%y')
