@@ -1,6 +1,7 @@
 from django.db import models
 from users.models import User
 from graduation.models import Graduation
+from daily_shedule.models import Day
 
 
 class Artist(models.Model):
@@ -39,7 +40,8 @@ class Song(models.Model):
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
     songs = models.ManyToManyField(Song, related_name='playlists')
-    day = models.DateField()
+    day = models.ForeignKey(
+        Day, related_name='playlists', on_delete=models.CASCADE)
     responsible_teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

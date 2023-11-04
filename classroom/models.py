@@ -1,6 +1,7 @@
 from math import ceil
 
 from django.db import models
+from daily_shedule.models import Day
 from graduation.models import Criteria
 from graduation.models import Graduation
 
@@ -34,12 +35,10 @@ class Classroom(models.Model):
 
 class ClassroomInstance(models.Model):
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    date = models.DateField()
+    date = models.ForeignKey(
+        Day, related_name='class_instances', on_delete=models.CASCADE)
     criteria = models.ManyToManyField(
-        Criteria,
-        related_name='classroom_instances',
-        blank=True
-    )
+        Criteria, related_name='classroom_instances')
     subject = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
