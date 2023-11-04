@@ -18,7 +18,8 @@ class Role(models.TextChoices):
 class Student(models.Model):
     user = models.ForeignKey(
         User, related_name='students', on_delete=models.CASCADE)
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
+    role = models.CharField(
+        max_length=20, choices=Role.choices, default=Role.LEAD)
     graduation = models.ForeignKey(Graduation, on_delete=models.CASCADE)
     classrooms = models.ManyToManyField(Classroom, related_name='students')
 
@@ -29,7 +30,8 @@ class Student(models.Model):
 class Teacher(models.Model):
     user = models.ForeignKey(
         User, related_name='teachers', on_delete=models.CASCADE)
-    role = models.ForeignKey(Role, on_delete=models.CASCADE)
+    role = models.CharField(
+        max_length=10, choices=Role.choices, default=Role.LEAD)
     classrooms = models.ManyToManyField(Classroom, related_name='teachers')
 
     def __str__(self):
