@@ -20,7 +20,8 @@ class ClassCouncil(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     result = models.CharField(
         max_length=10, choices=Result.choices, default=Result.FAILED)
-    posture = models.ForeignKey(choices=Posture.choices)
+    posture = models.CharField(
+        max_length=10, choices=Posture.choices, default=Posture.FAILED)
     date = models.DateField()
     observations = models.TextField(max_length=500)
 
