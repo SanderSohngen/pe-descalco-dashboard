@@ -1,7 +1,7 @@
 from django.db import models
 from users.models import User
 from graduation.models import Graduation
-from daily_shedule.models import Day
+from daily_schedule.models import Day
 
 
 class Artist(models.Model):

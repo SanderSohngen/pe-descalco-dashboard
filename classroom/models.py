@@ -1,7 +1,7 @@
 from math import ceil
 
 from django.db import models
-from daily_shedule.models import Day
+from daily_schedule.models import Day
 from graduation.models import Criteria
 from graduation.models import Graduation
 

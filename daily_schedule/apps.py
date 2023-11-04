@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class DailySheduleConfig(AppConfig):
+class DailyScheduleConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'daily_shedule'
+    name = 'daily_schedule'
