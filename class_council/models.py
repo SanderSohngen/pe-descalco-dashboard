@@ -18,7 +18,8 @@ class Result(models.TextChoices):
 class ClassCouncil(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
-    result = models.ForeignKey(choices=Result.choices)
+    result = models.CharField(
+        max_length=10, choices=Result.choices, default=Result.FAILED)
     posture = models.ForeignKey(choices=Posture.choices)
     date = models.DateField()
     observations = models.TextField(max_length=500)
