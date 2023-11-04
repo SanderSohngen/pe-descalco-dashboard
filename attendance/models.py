@@ -6,7 +6,7 @@ from classroom.models import ClassroomInstance
 class Attendance(models.Model):
     classroom_instance = models.ForeignKey(
         ClassroomInstance,
-        related_name='attendances',
+        related_name='%(class)s_attendances',
         on_delete=models.CASCADE
     )
     attended = models.BooleanField(default=False)

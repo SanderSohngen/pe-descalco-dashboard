@@ -39,9 +39,9 @@ class Song(models.Model):
 
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
-    songs = models.ManyToManyField(Song, related_name='playlists')
+    songs = models.ManyToManyField(Song, related_name='%(class)s_playlists')
     day = models.ForeignKey(
-        Day, related_name='playlists', on_delete=models.CASCADE)
+        Day, related_name='%(class)s_playlists', on_delete=models.CASCADE)
     responsible_teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
