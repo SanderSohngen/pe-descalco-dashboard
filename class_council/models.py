@@ -24,9 +24,6 @@ class ClassCouncil(models.Model):
     observations = models.TextField(max_length=500)
 
     def __str__(self):
-        student_name = self.student.user.get_full_name()
-        student_role = self.student.role
-        student_info = f"{student_name} ({student_role})"
         teacher_name = self.teacher.user.get_full_name()
         date_str = self.date.strftime('%d/%m/%y')
-        return f"{student_info} - {self.result} - {date_str} - {teacher_name}"
+        return f"{self.student} - {self.result} - {date_str} - {teacher_name}"
