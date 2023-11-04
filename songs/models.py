@@ -44,5 +44,16 @@ class Playlist(models.Model):
         Day, related_name='playlists', on_delete=models.CASCADE)
     responsible_teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    class Meta:
+        abstract = True
+
     def __str__(self):
         return f"{self.name} - {self.day.strftime('%d/%m/%y')}"
+
+
+class FreeTimePlaylist(Playlist):
+    pass
+
+
+class ClassroomPlaylist(Playlist):
+    pass
