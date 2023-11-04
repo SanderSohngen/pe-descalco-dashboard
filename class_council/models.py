@@ -21,7 +21,7 @@ class ClassCouncil(models.Model):
     result = models.CharField(
         max_length=10, choices=Result.choices, default=Result.FAILED)
     posture = models.CharField(
-        max_length=10, choices=Posture.choices, default=Posture.FAILED)
+        max_length=10, choices=Posture.choices, default=Posture.AVERAGE)
     date = models.DateField()
     observations = models.TextField(max_length=500)
 
