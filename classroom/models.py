@@ -42,5 +42,4 @@ class ClassroomInstance(models.Model):
     subject = models.TextField(max_length=500, blank=True)
 
     def __str__(self):
-        date_str = self.date.strftime('%d/%m/%y')
-        return f"{self.classroom.graduation} - {date_str}"
+        return f"{self.classroom.graduation} - {self.date}"
