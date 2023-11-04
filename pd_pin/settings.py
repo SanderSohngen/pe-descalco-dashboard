@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'attendance',
     'class_council',
     'classroom',
+    'daily_schedule',
     'graduation',
     'songs',
     'users',
