@@ -23,7 +23,7 @@ class Student(models.Model):
     classrooms = models.ManyToManyField(Classroom, related_name='students')
 
     def __str__(self):
-        return f"{self.user.get_full_name}, {self.role}-{self.graduation}"
+        return f"{self.user.get_full_name()}, {self.role}-{self.graduation}"
 
 
 class Teacher(models.Model):
@@ -37,4 +37,4 @@ class Teacher(models.Model):
             f"{classroom.graduation} - {classroom.day}"
             for classroom in self.classrooms.all()
         ])
-        return f"{self.user.get_full_name}: {self.role} {classroom_info}"
+        return f"{self.user.get_full_name()}: {self.role} {classroom_info}"
