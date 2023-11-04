@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 from graduation.models import Graduation
 
 
@@ -37,9 +38,9 @@ class Song(models.Model):
 
 class Playlist(models.Model):
     name = models.CharField(max_length=255)
-    class_playlist = models.BooleanField(default=False)
     songs = models.ManyToManyField(Song, related_name='playlists')
     day = models.DateField()
+    responsible_teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name} - {self.day.strftime('%d/%m/%y')}"
